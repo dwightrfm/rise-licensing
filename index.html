@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licensing Lab · Team RISE</title>
+<meta name="description" content="Short videos and quick checks for the life insurance licensing exam. One idea per video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+:root{
+  --ease:cubic-bezier(.16,1,.3,1);
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ink:#f4f8f9;--mut:rgba(228,240,243,.68);--dim:rgba(228,240,243,.42);
+  --teal:#52d6e8;--gold:#ffb45e;--blue:#3a8dff;--coral:#ff7a59;
+  --acc:var(--teal);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  background:#03070b;overflow-x:hidden}
+.sky{position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(120% 70% at 50% 118%,rgba(255,180,94,.55),rgba(255,122,89,.22) 30%,transparent 60%),
+    radial-gradient(80% 50% at 15% 0%,rgba(58,141,255,.20),transparent 60%),
+    radial-gradient(70% 45% at 90% 10%,rgba(82,214,232,.14),transparent 60%),
+    linear-gradient(180deg,#03070b 0%,#071521 55%,#14202b 100%)}
+.sun{position:fixed;left:50%;bottom:-38vh;width:70vh;height:70vh;transform:translateX(-50%);border-radius:50%;z-index:-1;
+  background:radial-gradient(circle,rgba(255,214,150,.65),rgba(255,180,94,.25) 40%,transparent 70%);filter:blur(10px);
+  animation:rise 6s var(--ease) both}
+@keyframes rise{from{bottom:-60vh;opacity:0}to{bottom:-38vh;opacity:1}}
+.motes{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(1.5px 1.5px at 12% 30%,rgba(255,255,255,.5),transparent 60%),
+    radial-gradient(1px 1px at 72% 18%,rgba(255,255,255,.45),transparent 60%),
+    radial-gradient(1.5px 1.5px at 40% 62%,rgba(255,220,170,.4),transparent 60%),
+    radial-gradient(1px 1px at 86% 54%,rgba(255,255,255,.35),transparent 60%),
+    radial-gradient(1px 1px at 26% 82%,rgba(255,220,170,.35),transparent 60%)}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 16px 80px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-family:var(--mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);text-decoration:none;display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold),0 0 26px var(--gold)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--acc));box-shadow:0 0 10px var(--acc)}
+h1{font-size:clamp(44px,8vw,92px);font-weight:700;letter-spacing:-.045em;line-height:.96;margin:0}
+h2{font-size:clamp(30px,5vw,52px);font-weight:650;letter-spacing:-.03em;line-height:1.03;margin:0}
+h3{font-size:20px;font-weight:600;letter-spacing:-.01em;margin:0 0 14px}
+em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--acc);text-shadow:0 0 40px color-mix(in srgb,var(--acc) 45%,transparent)}
+.lede{font-size:clamp(18px,2.4vw,22px);font-weight:350;color:var(--mut);line-height:1.45;max-width:640px;margin:20px 0 0}
+.hero{padding:70px 0 40px}
+.glass{position:relative;border-radius:26px;
+  background:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.04) 55%,rgba(255,255,255,.07));
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 0 0 1px rgba(255,255,255,.07),0 40px 90px -40px rgba(0,0,0,.8)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 80%,transparent),rgba(255,255,255,.06) 32%,transparent 58%,color-mix(in srgb,var(--coral) 55%,transparent));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:10px}
+.card{display:flex;flex-direction:column;gap:12px;padding:26px;text-decoration:none;color:inherit;min-height:220px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.card:hover{transform:translateY(-4px)}
+.card .n{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--acc)}
+.card .t{font-size:24px;font-weight:650;letter-spacing:-.02em;line-height:1.12}
+.card .s{color:var(--mut);font-size:15px;line-height:1.45;flex:1}
+.chip{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:600;
+  background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.chip.ready{background:color-mix(in srgb,var(--gold) 22%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--gold) 60%,transparent)}
+.chip i{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.8}
+.chip.ready i{background:var(--gold);box-shadow:0 0 10px var(--gold);opacity:1}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:56px}
+.how .glass{padding:22px}
+.how b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold);margin-bottom:8px}
+.how p{margin:0;color:var(--mut);line-height:1.5;font-size:15px}
+/* topic view */
+.back{display:inline-flex;gap:8px;align-items:center;color:var(--mut);text-decoration:none;font-size:14px;margin:34px 0 26px}
+.back:hover{color:var(--ink)}
+.player{margin:28px 0;overflow:hidden;aspect-ratio:16/9;display:grid;place-items:center}
+.player iframe,.player video{width:100%;height:100%;border:0;border-radius:26px;display:block}
+.pending{text-align:center;padding:30px;color:var(--mut)}
+.pending .ring{width:46px;height:46px;border-radius:50%;margin:0 auto 16px;border:2px solid rgba(255,255,255,.12);border-top-color:var(--gold);animation:spin 1.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.panel{padding:24px}
+.cheat p{margin:0 0 10px;font-size:17px;line-height:1.45}
+.cheat p:last-child{margin:0}
+.flip{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border:0;padding:16px 18px;margin:0 0 10px;border-radius:16px;
+  background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);transition:background .3s}
+.flip:hover{background:rgba(255,255,255,.1)}
+.flip .q{font-size:16px;line-height:1.45}
+.flip .lab{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--dim);display:block;margin-bottom:6px}
+.flip .a{display:none;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);color:var(--gold);font-size:15px;line-height:1.45}
+.flip.open .a{display:block}
+.flip.open .lab{color:var(--gold)}
+details.sheet{margin-top:18px;padding:0}
+details.sheet summary{cursor:pointer;padding:22px 24px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.sheet summary::-webkit-details-marker{display:none}
+details.sheet summary::after{content:"+";font-size:22px;color:var(--acc)}
+details.sheet[open] summary::after{content:"\2212"}
+.md{padding:0 24px 24px;color:var(--mut);line-height:1.6;font-size:16px}
+.md h1{font-size:26px;letter-spacing:-.02em;color:var(--ink)}
+.md h2{font-size:19px;margin:26px 0 8px;color:var(--ink);letter-spacing:-.01em}
+.md strong{color:var(--ink)}
+.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;
+  background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.btn:hover{background:rgba(255,255,255,.14)}
+footer{margin-top:80px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;line-height:2}
+.fade{animation:fade .8s var(--ease) both}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="sky"></div><div class="sun"></div><div class="motes"></div>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#"><span class="dot"></span>Team RISE · Licensing Lab</a>
+  </header>
+  <main id="app"></main>
+  <footer>Study help for the life licensing exam<br>Always check your state's exam outline</footer>
+</div>
+<script src="data.js"></script>
+<script>
+const T = window.TOPICS || [];
+const app = document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hasVideo = t => t.video && (t.video.youtube || t.video.mp4);
+const accents = ['#52d6e8','#6fd0d8','#9ccbb8','#c9c08f','#eab874','#ffb45e'];
+
+function home(){
+  document.title = 'Licensing Lab · Team RISE';
+  app.innerHTML = `
+  <section class="hero fade">
+    <p class="eyebrow">Life licensing · Short videos</p>
+    <h1>The exam words,<br><em>made simple.</em></h1>
+    <p class="lede">One idea per video. Three to five minutes each. Watch it, flip the exam traps, then answer the quick check before you move on.</p>
+  </section>
+  <section class="grid">
+    ${T.map((t,i)=>`
+      <a class="card glass fade" href="#${t.id}" style="--acc:${accents[i%accents.length]};animation-delay:${i*70}ms">
+        <span class="n">${t.id} · VIDEO</span>
+        <span class="t">${esc(t.title)}</span>
+        <span class="s">${esc(t.subtitle || t.goal)}</span>
+        <span class="chip ${hasVideo(t)?'ready':''}"><i></i>${hasVideo(t)?'Watch now':'Video coming'}</span>
+      </a>`).join('')}
+  </section>
+  <section class="how">
+    <div class="glass fade"><b>01 · WATCH</b><p>Each video teaches one topic in plain words with a picture you can remember.</p></div>
+    <div class="glass fade"><b>02 · FLIP</b><p>Tap each exam trap. Every one is a sentence the test uses to fool you.</p></div>
+    <div class="glass fade"><b>03 · CHECK</b><p>Answer the three questions out loud before you tap to see if you got it.</p></div>
+  </section>`;
+  window.scrollTo(0,0);
+}
+
+function player(t){
+  const v = t.video || {};
+  if (v.youtube) return `<iframe src="https://www.youtube-nocookie.com/embed/${esc(v.youtube)}?rel=0" title="${esc(t.title)}" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  if (v.mp4) return `<video src="${esc(v.mp4)}" controls preload="metadata" playsinline></video>`;
+  return `<div class="pending"><div class="ring"></div>Video is being made. The study notes below are ready now.</div>`;
+}
+
+function topic(id){
+  const i = T.findIndex(t => t.id === id);
+  if (i < 0) return home();
+  const t = T[i], prev = T[i-1], next = T[i+1];
+  document.title = t.title + ' · Licensing Lab';
+  document.documentElement.style.setProperty('--acc', accents[i%accents.length]);
+  app.innerHTML = `
+  <a class="back" href="#">&larr; All videos</a>
+  <section class="fade">
+    <p class="eyebrow">${t.id} · ${esc(t.subtitle ? t.title : 'Licensing')}</p>
+    <h2>${esc(t.subtitle || t.title)}</h2>
+    <p class="lede">${esc(t.goal.replace(/^by the end, /i,''))}</p>
+  </section>
+  <div class="player glass fade">${player(t)}</div>
+  <div class="cols">
+    <section class="panel glass cheat fade">
+      <h3>${esc(t.cheatName)}</h3>
+      ${t.cheat.map(l=>`<p>${esc(l)}</p>`).join('')}
+    </section>
+    <section class="panel glass fade">
+      <h3>Quick check</h3>
+      ${t.quiz.map((q,n)=>`<button class="flip"><span class="lab">QUESTION ${n+1} · TAP FOR ANSWER</span><span class="q">${esc(q.q)}</span><span class="a">${esc(q.a)}</span></button>`).join('')}
+    </section>
+  </div>
+  <section class="panel glass fade" style="margin-top:18px">
+    <h3>Exam traps · true or false?</h3>
+    ${t.traps.map(x=>`<button class="flip"><span class="lab">TRAP · TAP TO REVEAL</span><span class="q">"${esc(x.claim)}"</span><span class="a">${esc(x.truth)}</span></button>`).join('')}
+  </section>
+  <details class="sheet glass fade">
+    <summary>Read the full study sheet</summary>
+    <div class="md">${window.marked ? marked.parse(t.sheet) : '<pre>'+esc(t.sheet)+'</pre>'}</div>
+  </details>
+  <nav class="nav2">
+    ${prev?`<a class="btn" href="#${prev.id}">&larr; ${esc(prev.title)}</a>`:'<span></span>'}
+    ${next?`<a class="btn" href="#${next.id}">${esc(next.title)} &rarr;</a>`:''}
+  </nav>`;
+  app.querySelectorAll('.flip').forEach(b => b.addEventListener('click', () => b.classList.toggle('open')));
+  window.scrollTo(0,0);
+}
+
+function route(){
+  const id = location.hash.slice(1);
+  document.documentElement.style.removeProperty('--acc');
+  id ? topic(id) : home();
+}
+addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
