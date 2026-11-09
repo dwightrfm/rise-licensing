@@ -123,12 +123,13 @@ footer{margin-top:80px;text-align:center;font-family:var(--mono);font-size:11px;
   <main id="app"></main>
   <footer>Study help for the life licensing exam<br>Always check your state's exam outline</footer>
 </div>
-<script src="data.js"></script>
+<script src="data.js?v=1794198399"></script>
 <script>
 const T = window.TOPICS || [];
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const hasVideo = t => t.video && (t.video.youtube || t.video.mp4);
+const goal = g => { g = g.replace(/^by the end, /i,'').replace(/^the viewer (can|knows|understands)/i,(m,v)=>'After this you '+(v.toLowerCase()==='knows'?'know':v.toLowerCase()==='understands'?'understand':'can')); return g.charAt(0).toUpperCase()+g.slice(1); };
 const accents = ['#52d6e8','#6fd0d8','#9ccbb8','#c9c08f','#eab874','#ffb45e'];
 
 function home(){
@@ -174,7 +175,7 @@ function topic(id){
   <section class="fade">
     <p class="eyebrow">${t.id} · ${esc(t.subtitle ? t.title : 'Licensing')}</p>
     <h2>${esc(t.subtitle || t.title)}</h2>
-    <p class="lede">${esc(t.goal.replace(/^by the end, /i,''))}</p>
+    <p class="lede">${esc(goal(t.goal))}</p>
   </section>
   <div class="player glass fade">${player(t)}</div>
   <div class="cols">
