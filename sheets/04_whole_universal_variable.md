@@ -1,4 +1,4 @@
-# Whole Life vs Universal Life vs Variable Life
+# Whole, Universal and Variable Life: Two Questions Sort Them All
 
 Audience: people studying for the life insurance licensing exam.
 Goal: the viewer can tell the three types apart by asking two questions: is the premium flexible, and who carries the investment risk?
